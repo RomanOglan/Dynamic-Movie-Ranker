@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+    
+    </style>
+    <h1 style = "text-align: center">Movie Ranker</h1>
+</head>
+
+<body>
+    <div class= "content">
+        {% if movies|length < 1 %}
+        <h4>There are no Movies. Rank one below!</h4>
+        {% else %}
+        <table>
+            <tr>
+                <th>Movies</th>
+                <th>Added</th>
+                <th>Actions</th>
+            </tr>
+            {% for movie in movies%}
+                <tr>
+                    <td>{{ movie.content }}</td>
+                    <td>{{ movie.rating }}</td>
+                    <td>
+                        <a href="/delete/{{movie.id}}">Delete</a>
+                        <a href="/update/{{movie.id}}">Update</a>
+                    </td>
+                </tr>
+            {%endfor%}
+        </table>
+        {%endif%}
+
+        <form actions = "/" method = POST>
+            <input type = "text" name = "content" id = "content">
+            <input type = "submit" value = "Add Movie">
+        </form>
+    </div>
+
+    
+</body>
+</html>
