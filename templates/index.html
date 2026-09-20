@@ -30,7 +30,7 @@
             </tr>
             {% for movie in movies%}
                 <tr>
-                    <td>{{ movie.id }}</td>
+                    <td>{{ movie.content }}</td>
                     <td>{{ movie.rating }}</td>
                     <td>
                         <a href="/delete/{{movie.id}}">Delete</a>
@@ -41,11 +41,7 @@
         </table>
         {%endif%}
 
-        <form action="/" method="POST">
-            <input type="text" name="content" id="content" placeholder="Movie Title">
-            <input type="number" name="rating" id="rating" placeholder="Rating">
-            <input type="submit" value="Add Movie">
-        </form>
+        <a href = "/add/">Add Movie</a>
     </div>
 
     

@@ -20,6 +20,7 @@ class Movie(db.Model):
 def index():
     if request.method == 'POST':
         pass
+        
         movie_content = request.form['content'] 
         movie_rating = request.form.get('rating')
         new_movie = Movie(content=movie_content, rating = movie_rating)
@@ -35,6 +36,7 @@ def index():
         movies = db.session.execute(db.select(Movie).order_by(Movie.rating)).scalars().all()
         return render_template('index.html', movies = movies)
     
+
 @app.route('/delete/<int:id>')
 def delete(id):
     movie_to_delete = db.session.get(Movie, id) 
@@ -55,6 +57,7 @@ def update(id):
 
     if request.method == 'POST':
         movie.content = request.form['content']
+        movie.rating = request.form['rating']
         try:
             db.session.commit()
             return redirect('/')
@@ -63,6 +66,8 @@ def update(id):
     else:
         return render_template('update.html', movie = movie)
     
-
+@app.route('/add/>', methods = ['GET', 'POST'])
+def add():
+    
 if __name__ == "__main__":
     app.run(debug = True)

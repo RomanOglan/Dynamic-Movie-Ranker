@@ -20,6 +20,7 @@
         <h1 style = "text-align: center">Update Movie Ranking</h1>
         <form actions = "/update{{movie.id}}" method = POST>
             <input type = "text" name = "content" id = "content", value = "{{movie.content}}">
+            <input type = "text" name = "rating" id = "rating", value = "{{movie.rating}}">
             <input type = "submit" value = "Update Movie Ranking">
         </form>
     </div>
